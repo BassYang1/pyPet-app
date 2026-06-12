@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="UTF-8" />
+		<!-- 1. 移动端视口核心配置：适配屏幕、禁止缩放、刘海屏全覆盖 -->
+		<meta name="viewport"
+			content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+
+		<!-- 2. iOS 桌面图标全屏 + 状态栏沉浸式 -->
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<!-- 3. 安卓沉浸式状态栏配色（配合原生主题） -->
+		<meta name="theme-color" content="#ffffff" />
+
+		<!-- 4. 禁止浏览器自动识别手机号、邮箱、地址（避免误加超链接） -->
+		<meta name="format-detection" content="telephone=no, email=no, address=no" />
+
+		<!-- 5. 关闭页面缓存（开发+生产通用，避免资源不更新） -->
+		<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+		<meta http-equiv="Pragma" content="no-cache" />
+		<meta http-equiv="Expires" content="0" />
+
+		<!-- 6. Vite 环境变量渲染页面标题（标准语法） -->
+		<title>%VITE_APP_TITLE%</title>
+		<!--preload-links-->
+		<!--app-context-->
+	</head>
+	<body>
+		<!-- 应用挂载根容器：补充基础样式，消除默认边距、全屏布局 -->
+		<div id="app" style="margin: 0; padding: 0; width: 100vw; height: 100vh;"><!--app-html--></div>
+
+		<!-- 修复：uni-app3.0 + Vite 标准入口脚本地址 -->
+		<script type="module" src="/src/main.ts"></script>
+	</body>
+</html>

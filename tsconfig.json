@@ -1,0 +1,57 @@
+{
+  "compilerOptions": {
+    /* 基础编译目标 */
+    "target": "ES2020",
+    "useDefineForClassFields": true,
+    "module": "ESNext",
+    "lib": ["ES2020", "DOM", "DOM.Iterable"],
+    "skipLibCheck": true,
+
+    /* Vite 模块解析规则 */
+    "moduleResolution": "bundler",
+    "allowImportingTsExtensions": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "jsx": "preserve",
+    "jsxImportSource": "vue",
+
+    /* 严格类型校验（企业级标准） */
+    "strict": true,
+    "strictNullChecks": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noFallthroughCasesInSwitch": true,
+    "forceConsistentCasingInFileNames": true,
+
+    /* 路径别名（与 vite.config.ts 强对齐） */
+    "baseUrl": "./",
+    "paths": {
+      "@/*": ["src/*"]
+    },
+
+    /* 类型库：Node + uni 全端类型全覆盖 */
+    "types": [
+      "node",
+      "@dcloudio/types",
+      "uni-app"
+    ]
+  },
+  /* 新增全局声明文件 uni-env.d.ts */
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.d.ts",
+    "src/**/*.tsx",
+    "src/**/*.vue",
+    "vite.config.ts",
+    "uni-env.d.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    "unpackage",
+    "dist"
+  ],
+  "references": [
+    { "path": "./tsconfig.node.json" }
+  ]
+}

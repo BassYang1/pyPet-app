@@ -1,0 +1,26 @@
+# 依赖目录
+node_modules/
+.pnpm-store/
+
+# 全端编译输出目录
+dist/
+unpackage/
+
+# TS 自动生成类型文件
+src/auto-imports.d.ts
+src/components.d.ts
+
+# 本地环境变量
+.env.local
+.env.*.local
+
+# 编辑器缓存
+.hbuilderx/
+.vscode/
+.idea/
+
+# 日志、系统文件
+*.log
+.DS_Store
+
+_docs/

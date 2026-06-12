@@ -1,0 +1,45 @@
+// 全局主题变量（全端共用）
+$primary-color: #409eff;
+$text-color: #333;
+
+// 通用工具样式（全端生效）
+.flex-row {
+  display: flex;
+  flex-direction: row;
+}
+.flex-col {
+  display: flex;
+  flex-direction: column;
+}
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.text-ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+// H5 端专属样式
+/* #ifdef H5 */
+body {
+  font-family: "PingFang SC", Helvetica, sans-serif;
+}
+/* #endif */
+
+// 所有小程序专属样式
+/* #ifdef MP */
+page {
+  line-height: 1.5;
+}
+/* #endif */
+
+// App 端专属样式
+/* #ifdef APP-PLUS */
+view {
+  /* 优化App端渲染 */
+  transform: translateZ(0);
+}
+/* #endif */

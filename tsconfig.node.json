@@ -1,0 +1,25 @@
+{
+  "compilerOptions": {
+    /* 项目引用：允许被主 tsconfig 关联引用，开启增量编译 */
+    "composite": true,
+    /* 跳过第三方库类型检查，提升速度、屏蔽兼容警告 */
+    "skipLibCheck": true,
+    /* TS 编译输出的 JS 版本，适配当前 Node 版本 */
+    "target": "ES2020",
+    /* 模块规范：使用 ESM */
+    "module": "ESNext",
+    /* 模块解析策略：适配 Vite/Rollup 打包器 */
+    "moduleResolution": "bundler",
+    /* 兼容 CommonJS 模块默认导入 */
+    "allowSyntheticDefaultImports": true,
+    /* ESM 与 CommonJS 深度互操作兼容（增强） */
+    "esModuleInterop": true,
+    /* 引入 Node 内置类型库，补齐 process / __dirname 等类型 */
+    "lib": ["ES2020"],
+    "types": ["node"]
+  },
+  /* 仅检查 Vite 配置文件，可按需扩展其他 Node 脚本 */
+  "include": ["vite.config.ts"],
+  /* 显式排除依赖目录，规范兜底 */
+  "exclude": ["node_modules"]
+}
