@@ -33,7 +33,7 @@
 	},
 	"h5": {
 		"devServer": {
-			"port": 3000,
+			"port": 8084,
 			"host": "0.0.0.0",
 			"https": false
 		},

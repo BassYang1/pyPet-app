@@ -38,7 +38,7 @@ export default defineConfig(({ mode }) => {
 
     // H5 开发服务
     server: {
-      port: 3000,
+      port: 8084,
       host: '0.0.0.0',
       open: false,
       cors: true,

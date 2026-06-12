@@ -58,7 +58,7 @@
    用途：uni-app 增强类型补充包，补齐官方类型缺失的组件属性、事件、页面配置等类型。
    要点：优化 TS 开发体验，减少 `any` 类型，适配 uni-ui 等扩展组件。
 
-5. **@vitejs/plugin-vue**
+5. **@vitejs/plugin-vue** （已移除，会与@dcloudio/vite-plugin-uni冲突，已经`内置**了对 Vue 组件的处理逻辑）
    版本：^4.6.2
    用途：Vite 解析 Vue 单文件组件（.vue）的官方插件。
    要点：Vite + Vue3 标配依赖，负责解析模板、脚本、样式代码。
