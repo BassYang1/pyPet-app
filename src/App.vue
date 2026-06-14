@@ -4,77 +4,77 @@
 	</view>
 </template>
 
-<script setup lang="ts">
-onLaunch((options) => {
-	console.log('应用启动', options)
-})
+<script setup lang="ts">	
+	onLaunch((options) => {
+		// 检查是否首次登录，未登录则跳转登录页
+		const hasLoggedIn = uni.getStorageSync('hasLoggedIn')
+		if (!hasLoggedIn) {
+			// uni.reLaunch({ url: '/pages/login/login' })
+			uni.reLaunch({ url: '/pages/home/index' })
+		}
+	})
 
-onShow(() => {
-	console.log('应用切入前台')
-})
+	onShow(() => {
+		console.log('App Show 切入前台')
+	})
 
-onHide(() => {
-	console.log('应用切入后台')
-})
+	onHide(() => {
+		console.log('App Hide 切入后台')
+	})
 
-// H5 端专属
-// #ifdef H5
-console.log('【环境】当前运行在 H5 移动端')
-// #endif
+	// H5 端专属
+	// #ifdef H5
+	console.log('【环境】当前运行在 H5 移动端')
+	// #endif
 
-// 全小程序通用
-// #ifdef MP
-console.log('【环境】当前运行在 小程序端')
-// #endif
+	// 全小程序通用
+	// #ifdef MP
+	console.log('【环境】当前运行在 小程序端')
+	// #endif
 
-// 仅微信小程序
-// #ifdef MP-WEIXIN
-console.log('【环境】当前运行在 微信小程序')
-// #endif
+	// 仅微信小程序
+	// #ifdef MP-WEIXIN
+	console.log('【环境】当前运行在 微信小程序')
+	// #endif
 
-// App 原生端
-// #ifdef APP-PLUS
-console.log('【环境】当前运行在 App 原生端')
-// #endif
+	// App 原生端
+	// #ifdef APP-PLUS
+	console.log('【环境】当前运行在 App 原生端')
+	// #endif
 
-// 非 App 端
-// #ifndef APP-PLUS
-console.log('【环境】非 App 端执行')
-// #endif
+	// 非 App 端
+	// #ifndef APP-PLUS
+	console.log('【环境】非 App 端执行')
+	// #endif
 </script>
 
 <style lang="scss">
-.app-root {
-	width: 100%;
-	height: 100%;
-}
+	.app-root {
+		width: 100%;
+		height: 100%;
+	}
 
-* {
-	margin: 0;
-	padding: 0;
-	box-sizing: border-box;
-}
+	* {
+		margin: 0;
+		padding: 0;
+		box-sizing: border-box;
+	}
 
-page {
-	background-color: #f7f8fa;
-}
+	page {
+		background-color: #f7f8fa;
+	}
 
-#ifdef H5
-page {
-	font-size: 14px;
-	padding-top: env(safe-area-inset-top);
-	padding-bottom: env(safe-area-inset-bottom);
-}
-#endif
+	#ifdef H5 page {
+		font-size: 14px;
+		padding-top: env(safe-area-inset-top);
+		padding-bottom: env(safe-area-inset-bottom);
+	}
 
-#ifdef MP
-page {
-	font-size: 15px;
-}
-#endif
+	#endif #ifdef MP page {
+		font-size: 15px;
+	}
 
-#ifdef APP-PLUS
-page {
-	padding-top: var(--status-bar-height);
-}
+	#endif #ifdef APP-PLUS page {
+		padding-top: var(--status-bar-height);
+	}
 </style>
