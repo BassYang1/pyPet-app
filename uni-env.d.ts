@@ -1,8 +1,13 @@
 interface ImportMetaEnv {
-  // 自定义变量
+   // 应用基础
   readonly VITE_APP_TITLE: string
+  readonly VITE_APP_VERSION: string
+  readonly VITE_APP_VERSION_CODE: number
+  readonly VITE_APP_DESC: string
+  readonly VITE_APP_CHARSET: string
+  
+  // 应用环境
+  readonly VITE_APP_ENV?: 'dev' | 'test' | 'prod' | 'pre' // 接口地址，全端请求统一域名
   readonly VITE_APP_BASE_API: string
-  readonly VITE_APP_UPLOAD_URL?: string
-  // 如果你需要非标准的模式标识（比如 'pre'），可以保留，否则直接使用 MODE
-  readonly VITE_APP_ENV?: 'dev' | 'test' | 'prod' | 'pre'
+  readonly VITE_APP_DEBUG: boolean // 开发调试开关
 }

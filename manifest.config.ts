@@ -9,8 +9,8 @@ const appid = isProduction
 
 // 公共配置
 const commonConfig = {
-  name: 'pyPet-app',
-  description: '全端开发框架',
+  name: 'pypet-app',
+  description: 'pet ai management',
   versionName: 'v26.0.0.1',
   versionCode: 1,                     // Number 类型[reference:0]
   transformPx: false,                 // Boolean 类型[reference:1]

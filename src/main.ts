@@ -31,6 +31,7 @@ export function createApp() {
 		// 可对接错误上报
 	}
 
+	console.log(__PY_APP_TITLE__)
 	// 5. 全局运行环境标识，环境信息（平台判断可在组件/页面内做）
 	app.config.globalProperties.$platform = uni.getSystemInfoSync().platform
 	console.log('当前运行平台：', app.config.globalProperties.$platform)

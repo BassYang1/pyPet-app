@@ -24,3 +24,5 @@ src/components.d.ts
 .DS_Store
 
 _docs/
+src/manifest.json
+src/pages.json

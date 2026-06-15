@@ -1,5 +1,5 @@
 # uni-app TS 多端工程架基础配置
-- 整体技术栈: Vite 5 + Vue3.5 + TypeScript5.4 + uni-app 3.x
+- 整体技术栈: nodejs20 + Vite 5 + Vue3.5 + TypeScript5.4 + uni-app 3.x
 - 主体架构版本: uni-app3.0.0-4080720251210001 + vite5.2.8 + vue3.5.10 + typescript5.4.5 + nodejs20
 
 注：

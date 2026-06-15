@@ -26,6 +26,20 @@ export default defineConfig(({ mode }) => {
 		envDir,
 		envPrefix: 'VITE_',
 
+		// define 常量注入
+		define: {
+			// 基础用法：布尔值
+			__PY_DEV__: JSON.stringify(!isProd),
+			__PY_PROD__: JSON.stringify(isProd),
+			__PY_DEBUG__: JSON.stringify(env.VITE_APP_DEBUG),
+
+			// 字符串常量
+			__PY_APP_TITLE__: JSON.stringify(env.VITE_APP_TITLE || 'pypet-app'),
+			__PY_APP_VERSION__: JSON.stringify(env.VITE_APP_VERSION || 'demo'),
+			__PY_APP_VESRSION_CODE__: JSON.stringify(env.VITE_APP_VERSION_CODE || '10'),
+			__PY_APP_DESC__: JSON.stringify(env.VITE_APP_DESC || 'uni-app 多端工程脚手架'),
+		},
+
 		// 路径别名
 		resolve: {
 			alias: {
@@ -129,7 +143,7 @@ export default defineConfig(({ mode }) => {
 			UniPages({
 				// 允许在 <route> 中使用 JSON5 语法（注释、尾逗号等）
 				routeBlockLang: 'json5',
-				homePage: 'pages/home/index'
+				// homePage: 'pages/home/index'
 			}),
 			uni()
 		]
