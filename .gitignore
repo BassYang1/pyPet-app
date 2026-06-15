@@ -26,3 +26,5 @@ src/components.d.ts
 _docs/
 src/manifest.json
 src/pages.json
+env/.env.production
+env/.env.development

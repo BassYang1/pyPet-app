@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+  <circle cx="12" cy="8" r="4" fill="#8B5CF6"/>
+  <path d="M5,21 C5,17 7,14 12,14 C17,14 19,17 19,21" fill="#8B5CF6" stroke="#8B5CF6" stroke-width="2" stroke-linecap="round"/>
+  <!-- 眼睛与微笑白色镂空 -->
+  <circle cx="10" cy="7.5" r="0.8" fill="#FFFFFF"/>
+  <circle cx="14" cy="7.5" r="0.8" fill="#FFFFFF"/>
+  <path d="M10,10 Q12,11.5 14,10" fill="none" stroke="#FFFFFF" stroke-width="1.2" stroke-linecap="round"/>
+</svg>
