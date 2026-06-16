@@ -4,7 +4,8 @@
 		<view class="pet-tabs">
 			<scroll-view scroll-x class="tabs-scroll" :show-scrollbar="false">
 				<view class="tab-item" v-for="pet in pets" :key="pet.id" @click="switchPet(pet.id)">
-					<image class="tab-avatar" :src="pet.avatar || '/static/default-avatar.png'" mode="aspectFill"></image>
+					<image class="tab-avatar" :src="pet.avatar || '/static/default-avatar.png'" mode="aspectFill">
+					</image>
 					<text class="tab-name">{{ pet.name }}</text>
 					<view class="tab-badge" v-if="currentPetId === pet.id">当前</view>
 				</view>
@@ -19,7 +20,8 @@
 		<view class="card">
 			<!-- 头像区域 -->
 			<view class="avatar-area">
-				<image class="avatar" :src="currentPet.avatar || '/static/default-avatar.png'" mode="aspectFill"></image>
+				<image class="avatar" :src="currentPet.avatar || '/static/default-avatar.png'" mode="aspectFill">
+				</image>
 				<button class="change-avatar-btn" @click="changeAvatar">📷 更换头像</button>
 			</view>
 
@@ -44,8 +46,10 @@
 					<view class="form-item half">
 						<text class="label">⚥ 性别</text>
 						<view class="gender-group">
-							<view class="gender-option" :class="{ active: formData.gender === 'male' }" @click="formData.gender = 'male'">公 ♂</view>
-							<view class="gender-option" :class="{ active: formData.gender === 'female' }" @click="formData.gender = 'female'">母 ♀</view>
+							<view class="gender-option" :class="{ active: formData.gender === 'male' }"
+								@click="formData.gender = 'male'">公 ♂</view>
+							<view class="gender-option" :class="{ active: formData.gender === 'female' }"
+								@click="formData.gender = 'female'">母 ♀</view>
 						</view>
 					</view>
 				</view>
@@ -67,7 +71,9 @@
 				<view class="form-item">
 					<text class="label">📋 过往行为（可选多选）</text>
 					<view class="tag-group">
-						<view class="tag" v-for="item in behaviorOptions" :key="item.value" :class="{ active: formData.pastBehaviors.includes(item.value) }" @click="toggleBehavior(item.value)">
+						<view class="tag" v-for="item in behaviorOptions" :key="item.value"
+							:class="{ active: formData.pastBehaviors.includes(item.value) }"
+							@click="toggleBehavior(item.value)">
 							{{ item.label }}
 						</view>
 					</view>
@@ -75,7 +81,8 @@
 
 				<view class="form-item">
 					<text class="label">❤️ 健康状态</text>
-					<textarea v-model="formData.healthStatus" placeholder="如：疫苗齐全，无慢性病" class="textarea" auto-height></textarea>
+					<textarea v-model="formData.healthStatus" placeholder="如：疫苗齐全，无慢性病" class="textarea"
+						auto-height></textarea>
 				</view>
 			</view>
 
@@ -83,28 +90,36 @@
 		</view>
 
 		<!-- 删除宠物按钮（非默认宠物时显示） -->
-		<button class="delete-btn" v-if="pets.length > 1 && currentPet" @click="deleteCurrentPet">删除 {{ currentPet.name }}</button>
+		<button class="delete-btn" v-if="pets.length > 1 && currentPet" @click="deleteCurrentPet">删除
+			{{ currentPet.name }}</button>
 	</view>
 </template>
 
 <script setup lang="ts">
 	import { ref, computed } from 'vue'
 
+	definePage({
+		style: {
+			navigationBarTitleText: '我的宠物',
+			navigationStyle: 'custom',
+		}
+	})
+
 	interface Pet {
-		id: number
-		name: string
-		breed: string
-		age: number
-		gender: 'male' | 'female'
-		weight: number
-		personality: string
-		pastBehaviors: string[]
-		healthStatus: string
-		avatar: string
+		id : number
+		name : string
+		breed : string
+		age : number
+		gender : 'male' | 'female'
+		weight : number
+		personality : string
+		pastBehaviors : string[]
+		healthStatus : string
+		avatar : string
 	}
 
 	// ---------- 静态选项 ----------
-	const personalityMap: Record<string, string> = {
+	const personalityMap : Record<string, string> = {
 		gentle: '温顺',
 		active: '活泼',
 		timid: '胆小'
@@ -149,7 +164,7 @@
 			loadCurrentPetToForm()
 		} else {
 			// 默认演示宠物
-			const defaultPet: Pet = {
+			const defaultPet : Pet = {
 				id: Date.now(),
 				name: '团团',
 				breed: '柴犬',
@@ -181,7 +196,7 @@
 	}
 
 	// 切换宠物
-	const switchPet = (id: number) => {
+	const switchPet = (id : number) => {
 		if (currentPetId.value === id) return
 		// 检查当前表单是否有未保存更改（简单弹窗提醒）
 		uni.showModal({
@@ -199,7 +214,7 @@
 
 	// 新增宠物
 	const addNewPet = () => {
-		const newPet: Pet = {
+		const newPet : Pet = {
 			id: Date.now(),
 			name: '新伙伴',
 			breed: '未知',
@@ -264,7 +279,7 @@
 	}
 
 	// 切换过往行为标签
-	const toggleBehavior = (value: string) => {
+	const toggleBehavior = (value : string) => {
 		const idx = formData.value.pastBehaviors.indexOf(value)
 		if (idx === -1) {
 			formData.value.pastBehaviors.push(value)
@@ -317,12 +332,14 @@
 		border-radius: 60rpx;
 		padding: 16rpx 0;
 		margin-bottom: 30rpx;
-		box-shadow: 0 2rpx 12rpx rgba(0,0,0,0.02);
+		box-shadow: 0 2rpx 12rpx rgba(0, 0, 0, 0.02);
 	}
+
 	.tabs-scroll {
 		white-space: nowrap;
 		padding: 0 20rpx;
 	}
+
 	.tab-item {
 		display: inline-flex;
 		flex-direction: column;
@@ -331,6 +348,7 @@
 		width: 120rpx;
 		position: relative;
 	}
+
 	.tab-avatar {
 		width: 80rpx;
 		height: 80rpx;
@@ -338,14 +356,17 @@
 		background: #F2E4D6;
 		border: 2px solid transparent;
 	}
+
 	.tab-item.active .tab-avatar {
 		border-color: #F2B84E;
 	}
+
 	.tab-name {
 		font-size: 24rpx;
 		margin-top: 6rpx;
 		color: #5A4230;
 	}
+
 	.tab-badge {
 		position: absolute;
 		top: -8rpx;
@@ -356,12 +377,14 @@
 		padding: 2rpx 10rpx;
 		border-radius: 30rpx;
 	}
+
 	.add-tab {
 		background: #F9F5EE;
 		border-radius: 40rpx;
 		padding: 12rpx 0;
 		width: 100rpx;
 	}
+
 	.add-icon {
 		font-size: 40rpx;
 		color: #C27E3A;
@@ -372,14 +395,16 @@
 		background: white;
 		border-radius: 48rpx;
 		padding: 32rpx;
-		box-shadow: 0 4rpx 16rpx rgba(0,0,0,0.02);
+		box-shadow: 0 4rpx 16rpx rgba(0, 0, 0, 0.02);
 	}
+
 	.avatar-area {
 		display: flex;
 		flex-direction: column;
 		align-items: center;
 		margin-bottom: 32rpx;
 	}
+
 	.avatar {
 		width: 140rpx;
 		height: 140rpx;
@@ -387,6 +412,7 @@
 		background: #F8E1C0;
 		border: 4rpx solid #FFE9D4;
 	}
+
 	.change-avatar-btn {
 		background: #F9F1E8;
 		color: #C27E3A;
@@ -400,18 +426,22 @@
 	.form-section {
 		margin-top: 10rpx;
 	}
+
 	.form-row {
 		display: flex;
 		gap: 20rpx;
 		margin-bottom: 24rpx;
 	}
+
 	.form-item {
 		flex: 1;
 		margin-bottom: 24rpx;
 	}
+
 	.half {
 		flex: 1;
 	}
+
 	.label {
 		display: block;
 		font-size: 26rpx;
@@ -419,7 +449,10 @@
 		color: #594C3C;
 		margin-bottom: 12rpx;
 	}
-	.input, .select-box, .textarea {
+
+	.input,
+	.select-box,
+	.textarea {
 		width: 100%;
 		background: #FEFAF5;
 		border: 1px solid #F0E2D2;
@@ -428,18 +461,22 @@
 		font-size: 28rpx;
 		color: #2C2418;
 	}
+
 	.select-box {
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
 	}
+
 	.arrow {
 		color: #BAA78F;
 	}
+
 	.gender-group {
 		display: flex;
 		gap: 16rpx;
 	}
+
 	.gender-option {
 		flex: 1;
 		background: #FEFAF5;
@@ -449,16 +486,19 @@
 		padding: 16rpx 0;
 		font-size: 28rpx;
 	}
+
 	.gender-option.active {
 		background: #FFF2E6;
 		border-color: #F2B84E;
 		color: #B95F1A;
 	}
+
 	.tag-group {
 		display: flex;
 		flex-wrap: wrap;
 		gap: 16rpx;
 	}
+
 	.tag {
 		background: #F9F5EE;
 		padding: 12rpx 24rpx;
@@ -466,13 +506,16 @@
 		font-size: 26rpx;
 		color: #5A4230;
 	}
+
 	.tag.active {
 		background: #F2B84E;
 		color: white;
 	}
+
 	.textarea {
 		min-height: 120rpx;
 	}
+
 	.save-btn {
 		background: #F2B84E;
 		color: white;
@@ -481,6 +524,7 @@
 		font-size: 32rpx;
 		font-weight: 600;
 	}
+
 	.delete-btn {
 		background: transparent;
 		border: 1px solid #F0DCC4;

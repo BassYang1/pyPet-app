@@ -19,7 +19,6 @@ declare module 'vue' {
 }
 
 declare global {
-
 	const __PY_DEV__ : boolean
 	const __PY_PROD__ : boolean
 	const __PY_DEBUG__ : boolean
