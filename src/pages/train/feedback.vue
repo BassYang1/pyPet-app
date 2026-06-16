@@ -1,16 +1,19 @@
 <template>
 	<view class="feedback-page">
+		<!-- 统计栏：白色卡片风格 -->
 		<view class="stats-bar">
 			<text>⏱️ 时长: {{ formatTime(timer) }}</text>
 			<text>✅ 成功率: {{ successRate }}%</text>
 		</view>
 
+		<!-- 相机/训练画面区域 -->
 		<view class="camera-box">
 			<image src="/static/training-placeholder.jpg" mode="aspectFill" class="camera-img"></image>
 			<view class="recognition-tag">{{ recognitionText }}</view>
 			<view class="voice-toast">{{ voiceText }}</view>
 		</view>
 
+		<!-- 控制按钮组：使用首页主色 -->
 		<view class="control-buttons">
 			<button class="btn-pause" @click="pauseTraining">{{ isPaused ? '继续' : '暂停' }}</button>
 			<button class="btn-end" @click="endTraining">结束训练</button>
@@ -29,17 +32,16 @@
 		}
 	})
 
-
 	const timer = ref(0)
 	const successCount = ref(0)
 	const totalCount = ref(0)
 	const isPaused = ref(false)
 	const recognitionText = ref('识别: 等待指令')
 	const voiceText = ref('请发出口令「坐」')
-	let interval = null
+	let interval : any = null
 	let step = 0
 
-	const formatTime = (seconds) => {
+	const formatTime = (seconds : number) => {
 		const mins = Math.floor(seconds / 60)
 		const secs = seconds % 60
 		return `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`
@@ -105,59 +107,80 @@
 </script>
 
 <style scoped>
+	/* 统一暖白米色背景，与首页一致 */
 	.feedback-page {
-		background: #1a1a1a;
+		background: #FDFBF7;
 		min-height: 100vh;
-		padding: 30rpx;
+		padding: 20rpx 30rpx 40rpx;
 	}
 
+	/* 统计栏：白色卡片风格，柔和阴影 */
 	.stats-bar {
 		display: flex;
 		justify-content: space-between;
-		background: #2c2c2e;
-		padding: 30rpx;
+		background: white;
+		padding: 28rpx 32rpx;
 		border-radius: 60rpx;
-		color: white;
-		margin-bottom: 30rpx;
+		color: #2C2418;
+		font-size: 28rpx;
+		font-weight: 500;
+		margin-bottom: 24rpx;
+		box-shadow: 0 2rpx 10rpx rgba(0, 0, 0, 0.02);
+		border: 1px solid #F0E2D2;
 	}
 
+	/* 相机/训练区域卡片 */
 	.camera-box {
 		position: relative;
 		border-radius: 48rpx;
 		overflow: hidden;
-		margin-bottom: 40rpx;
+		margin-bottom: 32rpx;
+		background: white;
+		box-shadow: 0 4rpx 16rpx rgba(0, 0, 0, 0.03);
 	}
 
 	.camera-img {
 		width: 100%;
 		height: 500rpx;
+		display: block;
 	}
 
+	/* 识别标签：半透深色，保持辨识度 */
 	.recognition-tag {
 		position: absolute;
-		left: 20rpx;
-		bottom: 20rpx;
-		background: rgba(0, 0, 0, 0.6);
-		padding: 12rpx 24rpx;
+		left: 24rpx;
+		bottom: 24rpx;
+		background: rgba(0, 0, 0, 0.65);
+		backdrop-filter: blur(8px);
+		padding: 12rpx 28rpx;
 		border-radius: 60rpx;
 		color: white;
+		font-size: 26rpx;
+		font-weight: 500;
 	}
 
+	/* 语音提示气泡：使用暖白背景，橙色文字 */
 	.voice-toast {
 		position: absolute;
-		bottom: 80rpx;
+		bottom: 100rpx;
 		left: 50%;
 		transform: translateX(-50%);
 		background: white;
-		color: #1e293b;
-		padding: 12rpx 24rpx;
+		color: #C57F2F;
+		padding: 12rpx 28rpx;
 		border-radius: 60rpx;
 		white-space: nowrap;
+		font-size: 26rpx;
+		font-weight: 500;
+		box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.1);
+		border: 1px solid #FFE9D4;
 	}
 
+	/* 控制按钮组：与首页快捷入口风格统一 */
 	.control-buttons {
 		display: flex;
 		gap: 20rpx;
+		margin-top: 8rpx;
 	}
 
 	.btn-pause,
@@ -166,20 +189,30 @@
 		flex: 1;
 		border-radius: 80rpx;
 		line-height: 88rpx;
+		font-size: 28rpx;
+		font-weight: 500;
+		border: none;
+		text-align: center;
 	}
 
+	/* 暂停/继续按钮：橙色系（首页主色） */
 	.btn-pause {
-		background: #ff9f0a;
+		background: #F2B84E;
 		color: white;
+		box-shadow: 0 4rpx 12rpx rgba(242, 184, 78, 0.2);
 	}
 
+	/* 结束训练：柔和红色调但不过于刺眼 */
 	.btn-end {
-		background: #ef4444;
-		color: white;
+		background: #FFE8E8;
+		color: #E5625E;
+		border: 1px solid #FFD4D4;
 	}
 
+	/* 奖励按钮：暖橙边框，浅橙底 */
 	.btn-reward {
-		background: #8b5cf6;
-		color: white;
+		background: #FFF6ED;
+		color: #C57F2F;
+		border: 1px solid #FFE9D4;
 	}
 </style>
