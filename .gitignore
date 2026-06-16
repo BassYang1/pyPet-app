@@ -28,3 +28,9 @@ src/manifest.json
 src/pages.json
 env/.env.production
 env/.env.development
+src/pages_backup/behavior/index.vue
+src/pages_backup/home/index.vue
+src/pages_backup/login/login.vue
+src/pages_backup/mine/index.vue
+src/pages_backup/pet/index.vue
+src/pages_backup/train/index.vue
