@@ -3,6 +3,7 @@ import uni from '@dcloudio/vite-plugin-uni'
 import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
 import UniPages from '@uni-helper/vite-plugin-uni-pages'
+import UniLayouts from '@uni-helper/vite-plugin-uni-layouts'
 import UniManifest from '@uni-helper/vite-plugin-uni-manifest'
 import { resolve } from 'path'
 
@@ -135,11 +136,18 @@ export default defineConfig(({ mode }) => {
 					'src/components-app'
 				],
 				dts: 'src/components.d.ts',
+				directoryAsNamespace: true,
 				extensions: ['vue'],
 				deep: true,
-				exclude: [/node_modules/, /dist/, /unpackage/]
+				exclude: [/node_modules/, /dist/, /unpackage/],
+				resolvers: [
+				  // VantResolver(),
+				  // ElementPlusResolver(),
+				  // 如果有其他库，继续添加
+				],
 			}),
 			UniManifest(),
+			UniLayouts(),
 			UniPages({
 				// 允许在 <route> 中使用 JSON5 语法（注释、尾逗号等）
 				routeBlockLang: 'json5',

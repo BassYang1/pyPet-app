@@ -74,8 +74,13 @@
 
 ### **@uni-helper/vite-plugin-uni-layouts**
 - 版本：^0.1.11
-- 用途：可定制布局框架
+- 用途：布局系统，支持页面布局复用
 - 要点：为 uni-app 提供类似 Nuxt 的页面布局系统。它自动扫描并全局注册 `src/layouts` 目录下的布局组件，并将页面用布局组件包裹，实现布局的集中管理和按页面切换。
+
+### **@uni-helper/vite-plugin-uni-components** (引入报错，提示找不到，退回并继续使用 unplugin-vue-components)
+- 版本：^0.3.2
+- 用途：组件自动导入，无需手动 import
+- 要点：自动导入 src/components 目录下的组件，无需手动 import 和注册；是 unplugin-vue-components 的专为 uni-app 改造的分支版本。
 
 ### **@uni-helper/vite-plugin-uni-manifest**
 - 版本：^0.3.1
@@ -106,6 +111,10 @@
 - 版本：^0.25.2
 - 用途：组件自动导入插件，自动识别并引入项目内自定义组件、第三方组件库。
 - 要点：无需页面手动引入组件，是 Vite 项目常用优化方案。
+
+注，
+- 暂不弃用，其分支版本@uni-helper/vite-plugin-uni-components，管理组件自动导入
+- 只用于按需引入第三方 UI 库
 
 ### **vite**
  - 版本：^5.2.8
